@@ -193,3 +193,21 @@ void printMsgReceived(TPCANMsg *pMsg)
   
   printf("\nNuestra trama de aplicacion recibida es:\nEstado: %d (Si se realiza correctamente, es 1)\nID DPD %d\n", estado, dpd);
 }
+
+void botonConfirmación()
+{
+     unsigned long pressed_data;
+
+	pressed_data = (GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_0 | GPIO_PIN_2| GPIO_PIN_3)); //leer de ese puerto ese pin
+
+	//usa una máscara
+
+	while (!((~pressed_data) & (GPIO_PIN_0)))
+	{
+		if ((~pressed_data) & (GPIO_PIN_0))
+		{
+			RIT128x96x4StringDraw("Confirmando ...", 10, 5, 15);
+		}
+		pressed_data = (GPIOPinRead(GPIO_PORTE_BASE, GPIO_PIN_1 | GPIO_PIN_0 | GPIO_PIN_2| GPIO_PIN_3)); //leer de ese puerto ese pin
+	}
+ }
