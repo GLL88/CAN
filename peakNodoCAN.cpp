@@ -65,6 +65,9 @@ void userCommands(TPCANHandle hdlPCAN)
                  break;        
         }
         break;
+      case 3:
+        botonConfirmación(hdlPCAN);      
+        break;
     }
   }
 }
@@ -194,7 +197,7 @@ void printMsgReceived(TPCANMsg *pMsg)
   printf("\nNuestra trama de aplicacion recibida es:\nEstado: %d (Si se realiza correctamente, es 1)\nID DPD %d\n", estado, dpd);
 }
 
-void botonConfirmación()
+void botonConfirmación(TPCANHandle hdlPCAN)
 {
      unsigned long pressed_data;
 
