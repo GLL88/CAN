@@ -9,6 +9,7 @@ int askID();
 void askMessageAndSend(TPCANHandle);
 void printMsgSent(TPCANMsg *pMsg);
 void printMsgReceived(TPCANMsg *pMsg);
+void botonConfirmación();
 
 int main(void)
 {
@@ -86,7 +87,7 @@ void askMessageAndSend(TPCANHandle hdlPCAN)
   {
         printf("Cantidad %d introducida no valida\nEscribir cantidad (1-999999) ", cantidad);
         gets(str);
-        sscanf(str,"%d",&cantidad);
+        sscanf(str,"%ld",&cantidad);
   }  
 
   printf("Escribir operario (0-3) ");
@@ -118,6 +119,7 @@ int menu(void)
    printf("\nElige opcion\n");
    printf("\t1: Enviar una trama de aplicacion\n");
    printf("\t2: Esperar una trama de aplicacion de un DPD\n");
+   printf("\t3: Recibir confirmacion\n");
    printf("\t0: Finalizar la aplicacion del controlador\n");
    gets(str);
    sscanf(str,"%d",&emaitza);
