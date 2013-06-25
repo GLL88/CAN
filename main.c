@@ -45,10 +45,15 @@ void select_task(){
 
 void inicializacion (){
 
-	//inicializacion_clock();
-	//inicializacion_pwm();
+
 	inicializacion_display();
 	inicializacion_keypad();
-	//inicializacion_led();
+	
 
+}
+
+void dibujar_en_pantalla(){
+	RIT128x96x4StringDraw("DPD", 10, 5, 15);
+	RIT128x96x4StringDraw("------", 10, 25, 15);
+	
 }
