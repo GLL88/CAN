@@ -1,3 +1,8 @@
+#include "driverlib/sysctl.h"
+#include "driverlib/systick.h"
+#include "driverlib/gpio.h"
+#include "driverlib/pwm.h"
+
 int main(void)
 {
 	/*
@@ -56,4 +61,13 @@ void dibujar_en_pantalla(){
 	RIT128x96x4StringDraw("DPD", 10, 5, 15);
 	RIT128x96x4StringDraw("------", 10, 25, 15);
 	
+}
+
+void recibir_trama(){
+}
+
+void leer_keypad(){
+}
+
+void reproducir_boton(){
 }
