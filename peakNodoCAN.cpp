@@ -11,6 +11,7 @@ void printMsgSent(TPCANMsg *pMsg);
 void printMsgReceived(TPCANMsg *pMsg);
 void botonConfirmación();
 
+
 int main(void)
 {
    
@@ -18,7 +19,7 @@ int main(void)
   int usbChanel;
   TPCANHandle hdlPCAN;
   
-  printf("Que puerto USB quieres usar con PCAN (PEAK System)? (1-8) ");
+  printf("Que puerto USB quieres usar con PCAN?");
   gets(str);
   sscanf(str,"%d",&usbChanel);
   hdlPCAN=PCAN_USBBUS1+usbChanel-1;
@@ -134,17 +135,17 @@ int askID()
   char str[128];
   int id;
 
-  printf("\nLa trama de la aplicacion (sobre bus CAN) a enviar estara formada por: Cantidad (1-999999) Operario (0-3) ID DPD (0-2047)\n\nCual es el ID DPD (0-2047) de la trama de aplicacion?\n");
+  printf("\nLa trama de la aplicacion (sobre CAN) a enviar estara formada por: Cantidad (1-999999) Operario (0-3) ID DPD (0-2047)\n\nCual es el ID DPD de la trama de aplicacion?\n");
   
   gets(str);
   sscanf(str,"%d",&id);
   while (id<0 || id>2047)
   {
-      printf("ID DPD %d introducido no valido\nCual es el ID DPD (0-2047) de la trama de aplicacion?\n", id);
+      printf("ID DPD %d introducido no valido\nCual es el ID DPD de la trama de aplicacion?\n", id);
       gets(str);
       sscanf(str,"%d",&id);
   }
-  printf("De acuerdo, ID DPD es %d\n", id);
+  printf("ID DPD: %d\n", id);
   
   return id;
 }
@@ -194,7 +195,7 @@ void printMsgReceived(TPCANMsg *pMsg)
   
   dpd=pMsg->ID;
   
-  printf("\nNuestra trama de aplicacion recibida es:\nEstado: %d (Si se realiza correctamente, es 1)\nID DPD %d\n", estado, dpd);
+  printf("\nNuestra trama de aplicacion recibida es:\nEstado: %d (Correctamente, es 1)\nID DPD %d\n", estado, dpd);
 }
 
 void botonConfirmación(TPCANHandle hdlPCAN)
